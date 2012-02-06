@@ -1,0 +1,14 @@
+# use "lev" and "ant" to start/stop vm separately
+# vagrant up lev
+# (not vagrant up tulp-lev)
+
+Vagrant::Config.run do |config|
+    config.vm.define :lev do |dev_config|
+        dev_config.vm.box = "tulp-lev"
+        config.vm.forward_port 22, 2222
+    end
+    config.vm.define :ant do |dev_config|
+        dev_config.vm.box = "tulp-ant"
+        config.vm.forward_port 22, 2223
+    end
+end
